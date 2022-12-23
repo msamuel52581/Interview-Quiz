@@ -19,20 +19,19 @@ const questions = [
 
 let score = 0;
 let i = 0;
-window.onload = () => {
-    let timer = 100;
-    let startButton = document.querySelector('#startButton');
-    let timerInterval;
-    startButton.addEventListener ('click', () => { 
-        timerInterval - startTimer(timer)
-        startQuiz(timer);
+let timer = 100;
+let startButton = document.querySelector('#startButton');
+let timerInterval;
+startButton.addEventListener ('click', () => { 
+    timerInterval - startTimer(timer)
+    startQuiz(timer);
 });
 
 const end = document.querySelector("#end")
 end.addEventListener('click', () => {
-    stopTimer(timerInterval);
-})
-};
+stopTimer(timerInterval);
+});
+
 
 const startTimer = (timer) => {
     const timerDisplay = document.querySelector('#timer')
@@ -63,11 +62,11 @@ for (let j = 0; j < 4; j++ ) {
     option.setAttribute('type', 'button');
     option.value = questions[i]['option' + (j + 1)];
     optionsContainer.appendChild(option);
-    option.addEventListener('click', (event)=>checkOption(event,i))
+    option.addEventListener('click', (event)=>checkOption(event))
 }
 }
 
-const checkOption = (event, i) => {
+const checkOption = (event) => {
    const result= document.querySelector("#result");
    if (i<questions.length) {
     if (event.target.value== questions [i].answer){
