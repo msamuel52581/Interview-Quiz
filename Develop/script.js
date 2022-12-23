@@ -1,36 +1,4 @@
-const questions = [
-    {
-    question: 'What is HTML?',
-    option1: 'Programing language',
-    option2: 'Scripting language',
-    option3: 'Style sheet language',
-    option4: 'Markup language',
-    answer: 'Markup language',
-    },
-    {
-    question: 'What is CSS?',
-    option1: 'Programing language',
-    option2: 'Scripting language',
-    option3: 'Markup language',
-    option4: 'Style sheet language',
-    answer: 'Style sheet language', 
-    },
-];
 
-let score = 0;
-let i = 0;
-let timer = 100;
-let startButton = document.querySelector('#startButton');
-let timerInterval;
-startButton.addEventListener ('click', () => { 
-    timerInterval - startTimer(timer)
-    startQuiz(timer);
-});
-
-const end = document.querySelector("#end")
-end.addEventListener('click', () => {
-stopTimer(timerInterval);
-});
 
 const startTimer = (timer) => {
     const timerDisplay = document.querySelector('#timer')
@@ -42,7 +10,6 @@ const startTimer = (timer) => {
 }
     
 const startQuiz = () => {
-const mainContent = document.querySelector('#mainContent');
 mainContent.classList.add('hide');
 
 const questionContainer = document.querySelector('#question-container');
@@ -84,7 +51,7 @@ const checkOption = (event) => {
 } else{
     const questionContainer = document.querySelector('#question-container');
     questionContainer.classList.remove('hide');
-    const messageContainer = document.querySelector('#messageContainer');
+
     messageContainer.classList.remove('hide');
     clearInterval(timerInterval);
 }
@@ -93,3 +60,63 @@ const checkOption = (event) => {
 const stopTimer = (timerInterval) => {
 clearInterval(timerInterval);
 };
+
+const addToScores = () => {
+let playerName = document.querySelector('#name');
+scores.push({name: playerName, highScore: score});
+messageContainer.classList.add("hide");
+scoresContainer.classList.remove('hide');
+let scoresDisplay= document.querySelector("scores");
+scoresDisplay.innerHTML = '';
+
+scores.sort((a, b) => a.score - b.score)
+for (let j = 0; j < scores.length; j++) {
+const res = document.createElement('p');
+res.textContent = scores[i].playerName + ': ' + scores[i].score;
+}
+};
+
+const restart = () => {
+    scoresContainer.classList.add('hide');
+    mainContent.classList.remove('hide')
+    timer = 100;
+}
+
+const questions = [
+    {
+    question: 'What is HTML?',
+    option1: 'Programing language',
+    option2: 'Scripting language',
+    option3: 'Style sheet language',
+    option4: 'Markup language',
+    answer: 'Markup language',
+    },
+    {
+    question: 'What is CSS?',
+    option1: 'Programing language',
+    option2: 'Scripting language',
+    option3: 'Markup language',
+    option4: 'Style sheet language',
+    answer: 'Style sheet language', 
+    },
+];
+
+let scores = []
+
+let scoresContainer = document.querySelector('#scoresContainer');
+const messageContainer = document.querySelector('#messageContainer');
+const mainContent = document.querySelector('#mainContent');
+
+let score = 0;
+let i = 0;
+let timer = 100;
+let startButton = document.querySelector('#startButton');
+let timerInterval;
+
+let endQuizButton= document.querySelector("#end")
+
+startButton.addEventListener ('click', () => { 
+    timerInterval = startTimer(timer);
+    startQuiz(timer);
+});
+endQuizButton.addEventListener('click', addToScores);
