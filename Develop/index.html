@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interview Quiz</title>
 
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <header> 
-        <h1>Interview Quiz</h1>
-        <p id="timer">Time:100</p>
+  </head>
+  <body>
+    <header>
+      <h1>Quiz</h1>
+      <p id="timer">Time:100</p>
     </header>
     <main>
-        <div id="mainContent">
-            <p>Press the start button to begin the quiz.</p>
-            <input type="button" id="startButton" value="Start" />
-        </div>
+      <div id="mainContent">
+        <p>You can start the quiz.</p>
+        <input type="button" id="startButton" value="Start" />
+      </div>
 
-        <div id="question-container" class="hide">
-            <p id="question">Sample Question</p>
-              <div id="optionsContainer"></div>
-              <p id="result"></p>
-        </div>
-        <div id="messageContainer" class="hide">
-            <h1>Finished!</h1>
-            <p id="message">
-                Congrats you finished the quiz! Please enter your name: 
-            </p>
-            <input type="text" id="name" />
-            <input type="button" value="End Quiz" id="end" />
-        </div>
-        <div id="scoresContainer" class="hide">        
-            <p>HighScores:</p>
-            <div id="scores"></div>
-            <input type="button" value="Restart">
-        </div> 
+      <div id="question-container" class="hide">
+        <p id="question">Sample Question</p>
+        <div id="optionsContainer"></div>
+        <p id="result"></p>
+      </div>
+      <div id="messageContainer" class="hide">
+        <h1>Finished.</h1>
+        <p id="message">
+          Congrats you finished the quiz. Please Enter your name:
+        </p>
+        <input type="text" id="name" />
+        <input type="button" value="End Quiz" id="end" />
+      </div>
+      <div id="scoresContainer" class="hide">
+        <p>High Scores:</p>
+        <div id="scores"></div>
+        <input type="button" value="Restart" id="restart" />
+      </div>
     </main>
 
-<script src="script.js"></script>
-</body>
-</html>
+    <script src="script.js"></script>
