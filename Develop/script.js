@@ -17,6 +17,8 @@ const questions = [
     },
 ];
 
+let score = 0;
+let i = 0;
 window.onload = () => {
     let timer = 100;
     let startButton = document.querySelector('#startButton');
@@ -45,10 +47,14 @@ const startQuiz = () => {
 const mainContent = document.querySelector('#mainContent');
 mainContent.classList.add('hide');
 
-let i= 0;
 const questionContainer = document.querySelector('#question-container');
 questionContainer.classList.remove('hide');
+displayQuestion ();
+};
+
+const displayQuestion = () => {
 const question = document.querySelector("#question")
+console.log(questions[i].question);
 question.textContent = questions[i].question;
 const optionsContainer = document.querySelector('#optionsContainer');
 optionsContainer.innerHTML = '';
@@ -57,7 +63,30 @@ for (let j = 0; j < 4; j++ ) {
     option.setAttribute('type', 'button');
     option.value = questions[i]['option' + (j + 1)];
     optionsContainer.appendChild(option);
+    option.addEventListener('click', (event)=>checkOption(event,i))
 }
+}
+
+const checkOption = (event, i) => {
+   const result= document.querySelector("#result");
+   if (i<questions.length) {
+    if (event.target.value== questions [i].answer){
+        score++;
+        result.textContent= "Correct!"
+    } else {
+        result.textContent="Wrong!";
+    }
+    i++;
+    displayQuestion();
+}
+else{
+    const questionContainer = document.querySelector('#question-container');
+    questionContainer.classList.remove('hide');
+    const messageContainer = document.querySelector('#messageContainer');
+    messageContainer.classList.remove('hide');
+    
+    }
+
 };
 
 const stopTimer = (timerInterval) => {

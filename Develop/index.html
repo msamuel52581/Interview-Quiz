@@ -8,13 +8,11 @@
 
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
     <header> 
         <h1>Interview Quiz</h1>
         <p id="timer">Time:100</p>
     </header>
-    
     <main>
         <div id="mainContent">
             <p>Press the start button to begin the quiz.</p>
@@ -24,12 +22,15 @@
         <div id="question-container" class="hide">
             <p id="question">Sample Question</p>
               <div id="optionsContainer"></div>
+              <p id="result"></p>
+        </div>
+        <div id="messageContainer" class="hide">
+            <p id="message">Congrats you finished the quiz!</p>
         </div>
         
         <input type="button" value="End Quiz" id="end" />
     </main>
 
 <script src="script.js"></script>
-
 </body>
 </html>
