@@ -32,7 +32,6 @@ end.addEventListener('click', () => {
 stopTimer(timerInterval);
 });
 
-
 const startTimer = (timer) => {
     const timerDisplay = document.querySelector('#timer')
     const timerInterval = setInterval(() => { 
@@ -62,30 +61,33 @@ for (let j = 0; j < 4; j++ ) {
     option.setAttribute('type', 'button');
     option.value = questions[i]['option' + (j + 1)];
     optionsContainer.appendChild(option);
-    option.addEventListener('click', (event)=>checkOption(event))
+    option.addEventListener('click', checkOption);
 }
-}
+};
 
 const checkOption = (event) => {
-   const result= document.querySelector("#result");
-   if (i<questions.length) {
-    if (event.target.value== questions [i].answer){
+   const result = document.querySelector("#result");
+   result.classList.remove('hide');
+   if (i < questions.length) {
+    if (event.target.value== questions [i].answer) {
         score++;
-        result.textContent= "Correct!"
+        result.textContent= "Correct!";
     } else {
         result.textContent="Wrong!";
     }
+    setTimeout(() => { 
+    result.classList.add('hide');        
+    }, 1500);
     i++;
+    console.log(i);
     displayQuestion();
-}
-else{
+} else{
     const questionContainer = document.querySelector('#question-container');
     questionContainer.classList.remove('hide');
     const messageContainer = document.querySelector('#messageContainer');
     messageContainer.classList.remove('hide');
-    
-    }
-
+    clearInterval(timerInterval);
+}
 };
 
 const stopTimer = (timerInterval) => {
