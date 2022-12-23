@@ -19,7 +19,7 @@ const questions = [
 
 window.onload = () => {
     let timer = 100;
-    let startButton = docuemnt.querySelector('#startButton');
+    let startButton = document.querySelector('#startButton');
     let timerInterval;
     startButton.addEventListener ('click', () => { 
         timerInterval - startTimer(timer)
@@ -48,14 +48,15 @@ mainContent.classList.add('hide');
 let i= 0;
 const questionContainer = document.querySelector('#question-container');
 questionContainer.classList.remove('hide');
-const question= document.querySelector("#question")
+const question = document.querySelector("#question")
 question.textContent = questions[i].question;
-const optionsContainer = document.querySelector('#options-container');
+const optionsContainer = document.querySelector('#optionsContainer');
 optionsContainer.innerHTML = '';
-for(let j=0; j<4; j++ ){
-    const option= document.createElement("input");
-    option.textContent(question [i]["option"+(j+1)]);
-    questionContainer.appendChild(option);
+for (let j = 0; j < 4; j++ ) {
+    const option= document.createElement('input');
+    option.setAttribute('type', 'button');
+    option.value = questions[i]['option' + (j + 1)];
+    optionsContainer.appendChild(option);
 }
 };
 
